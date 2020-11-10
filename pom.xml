@@ -96,36 +96,73 @@
             <scope>compile</scope>
         </dependency>
 
+        <!-- 订单详情查看(买家视角)-->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>get-trade</artifactId>
+            <version>1.0.0</version>
+            <scope>compile</scope>
+        </dependency>
+
+        <!-- 订单详情查看(买家视角)-->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>preview-order</artifactId>
+            <version>1.0.0</version>
+            <scope>compile</scope>
+        </dependency>
+
+        <!-- 查询式获取失败的消息列表-->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fail-msg-list</artifactId>
+            <version>1.0.0</version>
+            <scope>compile</scope>
+        </dependency>
+
+        <!-- 查询式获取失败的消息列表-->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fail-msg-confirm</artifactId>
+            <version>1.0.0</version>
+            <scope>compile</scope>
+        </dependency>
+
+        <!-- 订单列表查看(买家视角)-->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>get_buyerorder_list</artifactId>
+            <version>1.0.0</version>
+            <scope>compile</scope>
+        </dependency>
     </dependencies>
 
     <build>
         <plugins>
-            <!-- Maven Assembly Plugin -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-assembly-plugin</artifactId>
-                <version>3.0.0</version>
+                <version>2.5.5</version>
                 <configuration>
-                    <!-- MainClass in mainfest make a executable jar -->
                     <archive>
                         <manifest>
-                            <mainClass>com.alibaba.alibabasdk.AlibabasdkApplication</mainClass>
+                            <mainClass>alibabasdk</mainClass>
                         </manifest>
-                        <manifestEntries>
-                            <Class-Path>lib/*.jar</Class-Path>
-                        </manifestEntries>
                     </archive>
-                    <!-- get all project dependencies -->
                     <descriptorRefs>
                         <descriptorRef>jar-with-dependencies</descriptorRef>
                     </descriptorRefs>
-                    <descriptors>
-                        <!--assembly配置文件路径，注意需要在项目中新建文件assembly/release.xml-->
-                        <descriptor>${basedir}/assembly/release.xml</descriptor>
-                    </descriptors>
                 </configuration>
+                <executions>
+                    <execution>
+                        <id>make-assembly</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>
-
 </project>
